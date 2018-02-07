@@ -1,18 +1,36 @@
-import java.util.Scanner;
+import javax.swing.*;
 
 public class WindChill {
-    public static void main(String[] args) {
-        Scanner inputStream = new Scanner(System.in);
-        double temp;
-        int windSpeed;
+// Written by: Mike Baldwin
+// Prompts the user to enter a temperature and a wind speed, and then displays the
+// wind chill temperature.
 
-        System.out.print("Enter temperature(Fahrenheit): ");
-        temp = inputStream.nextDouble();
+public static void main(String[] args) {
+    JPanel panel = new JPanel();
+    JTextField tempVar = new JTextField(5);
+    JTextField wSpeedVar = new JTextField(5);
+    double temp;
+    int windSpeed, chillIndex, confirmCode;
 
-        System.out.print("Enter wind speed(mph): ");
-        windSpeed = inputStream.nextInt();
+    panel.add(new JLabel("Temperature"));
+    panel.add(tempVar);
+    panel.add(Box.createHorizontalStrut(15));
+    panel.add(new JLabel("Wind Speed"));
+    panel.add(wSpeedVar);
 
-        int chillIndex = (int) (35.74 + 0.6215 * temp - 35.75 * Math.pow(windSpeed, 0.16) + 0.4275 * temp * Math.pow(windSpeed, 0.16));
-        System.out.println("The wind chill index is " + chillIndex);
+    confirmCode = JOptionPane.showConfirmDialog(
+            null,
+            panel,
+            "Wind Chill Calculator",
+            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null);
+
+    if (confirmCode == JOptionPane.OK_OPTION) {
+        temp = Double.parseDouble(tempVar.getText());
+        windSpeed = Integer.parseInt(wSpeedVar.getText());
+        chillIndex = (int) (35.74 + 0.6215 * temp - 35.75 * Math.pow(windSpeed, 0.16) + 0.4275 * temp * Math.pow(windSpeed, 0.16));
+        JOptionPane.showMessageDialog(null, "The wind chill index is " + chillIndex);
     }
+}
 }
