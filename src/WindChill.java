@@ -14,7 +14,6 @@ public static void main(String[] args) {
 
     panel.add(new JLabel("Temperature"));
     panel.add(tempVar);
-    panel.add(Box.createHorizontalStrut(15));
     panel.add(new JLabel("Wind Speed"));
     panel.add(wSpeedVar);
 
