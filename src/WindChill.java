@@ -2,26 +2,23 @@ import javax.swing.*;
 
 public class WindChill {
 // Written by: Mike Baldwin
-// Prompts the user to enter a temperature and a wind speed, and then displays the
-// wind chill temperature.
+// Prompts the user to enter a temperature and a wind speed, and then displays the wind chill temperature.
 
 public static void main(String[] args) {
     JPanel panel = new JPanel();
-    JTextField tempVar = new JTextField(5);
-    JTextField wSpeedVar = new JTextField(5);
+    JTextField tempVar = new JTextField(3);
+    JTextField wSpeedVar = new JTextField(3);
     double temp;
     int windSpeed, chillIndex, confirmCode;
 
-    panel.add(new JLabel("Temperature"));
-    panel.add(tempVar);
-    panel.add(new JLabel("Wind Speed"));
-    panel.add(wSpeedVar);
+    panel.add(new JLabel("Temperature")); panel.add(tempVar);   panel.add(Box.createHorizontalStrut(15));
+    panel.add(new JLabel("Wind Speed"));  panel.add(wSpeedVar);
 
     confirmCode = JOptionPane.showConfirmDialog(
             null,
             panel,
             "Wind Chill Calculator",
-            JOptionPane.OK_CANCEL_OPTION,
+            JOptionPane.DEFAULT_OPTION,
             JOptionPane.QUESTION_MESSAGE,
             null);
 
